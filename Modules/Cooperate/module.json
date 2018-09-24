@@ -1,0 +1,16 @@
+{
+    "name": "Cooperate",
+    "alias": "cooperate",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Cooperate\\Providers\\CooperateServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

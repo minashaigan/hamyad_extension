@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/proficiency",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Proficiency\\Providers\\ProficiencyServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Proficiency\\": ""
+        }
+    }
+}

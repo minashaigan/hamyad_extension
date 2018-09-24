@@ -1,0 +1,16 @@
+{
+    "name": "Skill",
+    "alias": "skill",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Skill\\Providers\\SkillServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
