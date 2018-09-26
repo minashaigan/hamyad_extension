@@ -85,4 +85,12 @@ class Course extends Model
     {
         return $this->belongsToMany('Modules\Skill\Entities\Skill', 'course_skill', 'course_id', 'skill_id');
     }
+
+    /**
+     * The users that belong to the course.
+     */
+    public function favorites()
+    {
+        return $this->belongsToMany('App\User', 'favorites', 'course_id', 'user_id');
+    }
 }

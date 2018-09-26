@@ -10,6 +10,7 @@ use Modules\Course\Entities\Course;
 use Modules\Course\Entities\Section;
 use Modules\Course\Entities\SectionGroup;
 use Modules\Course\Entities\Teacher;
+use Modules\Organization\Entities\Organization;
 use Modules\Skill\Entities\Skill;
 
 class CoursesTableSeeder extends Seeder
@@ -35,5 +36,7 @@ class CoursesTableSeeder extends Seeder
         factory(Section::class, 10)->create();
         // create 10 skills using the course factory
         factory(Skill::class, 10)->create();
+        // create 10 organization using the course factory
+        factory(Organization::class, 10)->create();
     }
 }

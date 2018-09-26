@@ -48,10 +48,10 @@ $factory->define(\Modules\Course\Entities\SectionGroup::class, function (Faker $
 
 $factory->define(\Modules\Course\Entities\Section::class, function (Faker $faker) {
     return [
-        'name'          => $faker->name('section'),
-        'description'   => $faker->text,
-        'time'          => random_int(0, 99),
-        'section_group_id'    => random_int(1, 10),
+        'name'              => $faker->name('section'),
+        'description'       => $faker->text,
+        'time'              => random_int(0, 99),
+        'section_group_id'  => random_int(1, 10),
     ];
 });
 
@@ -59,5 +59,20 @@ $factory->define(\Modules\Skill\Entities\Skill::class, function (Faker $faker) {
     return [
         'name'          => $faker->name('skill'),
     ];
+});
+
+$factory->define(Modules\Organization\Entities\Organization::class, function (Faker $faker) {
+   return [
+       'name'           => $faker->name,
+       'logo'           => $faker->name('logo'),
+       'subdomain'      => $faker->name('subdomain'),
+       'email'          => $faker->email,
+       'IBAN'           => $faker->name('IBAN'),
+       'join_date'      => '1397/1/1',
+       'username'       => str_random(10),
+       'password'       => app('hash')->make('secret'),
+       'manager_number' => random_int(0, 10),
+       'manager_name'   => str_random(5)
+   ];
 });
 
