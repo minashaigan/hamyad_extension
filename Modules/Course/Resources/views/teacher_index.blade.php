@@ -23,38 +23,42 @@
         }
     </style>
 
-    <h1>Hello World</h1>
+    @if(!empty($errors->first()))
+        <h3>{{ $errors->first() }}</h3>
+    @else
+        <h1>Hello World</h1>
 
-    <p>
-        This view is loaded from module: {!! config('course.name') !!}
-    </p>
+        <p>
+            This view is loaded from module: {!! config('course.name') !!}
+        </p>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Category</th>
-            <th>Teacher</th>
-            <th>Price</th>
-            <th>Time</th>
-            <th>Rate</th>
-            <th>Skills</th>
-
-        </tr>
-        @foreach($courses['data'] as $course)
-            <tr class='clickable-row' data-url="{{$course['id']}}">
-                <td>{{$course['name']}}     </td>
-                <td>{{$course['image']}}    </td>
-                <td>{{$course['category']}} </td>
-                <td>{{$course['teacher']}}  </td>
-                <td>{{$course['price']}}    </td>
-                <td>{{$course['time']}}     </td>
-                <td>{{$course['rate']}}     </td>
-                <td>{{$course['skills']}}   </td>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Teacher</th>
+                <th>Price</th>
+                <th>Time</th>
+                <th>Rate</th>
+                <th>Skills</th>
 
             </tr>
-        @endforeach
-    </table>
+            @foreach($courses['data'] as $course)
+                <tr class='clickable-row' data-url="{{$course['id']}}">
+                    <td>{{$course['name']}}     </td>
+                    <td>{{$course['image']}}    </td>
+                    <td>{{$course['category']}} </td>
+                    <td>{{$course['teacher']}}  </td>
+                    <td>{{$course['price']}}    </td>
+                    <td>{{$course['time']}}     </td>
+                    <td>{{$course['rate']}}     </td>
+                    <td>{{$course['skills']}}   </td>
+
+                </tr>
+            @endforeach
+        </table>
+    @endif
 
     <script>
         $(document).ready(function(){

@@ -2,71 +2,35 @@
 
 namespace Modules\Exam\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Transformers\ExamTransformer;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Config;
+use Modules\Exam\Entities\Exam;
+use Spatie\Fractalistic\Fractal;
 
 class ExamController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     * @return Response
-     */
-    public function index()
-    {
-        return view('exam::index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
-    {
-        return view('exam::create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-    }
-
-    /**
      * Show the specified resource.
+     * @param $id
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('exam::show');
+
+        if($user = auth()->user()){
+            $exam = Exam::query()->find($id);
+            
+            $exam = Fractal::create()->item($exam, new ExamTransformer())
+                ->toArray();
+            
+            return view('exam::exam_show')->with(['exam' => $exam]);
+            
+        }
+        else{
+            return view('exam::exam_show')->withErrors('Unauthorized');
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
-    {
-        return view('exam::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @return Response
-     */
-    public function destroy()
-    {
-    }
 }

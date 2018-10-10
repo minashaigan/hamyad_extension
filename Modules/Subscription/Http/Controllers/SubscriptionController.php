@@ -5,6 +5,8 @@ namespace Modules\Subscription\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Config;
+use Modules\Subscription\Entities\Subscription;
 
 class SubscriptionController extends Controller
 {
@@ -14,7 +16,9 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-        return view('subscription::index');
+        $subscriptions = Subscription::all();
+        
+        return view('subscription::index')->with(['subscriptions' => $subscriptions]);
     }
 
     /**

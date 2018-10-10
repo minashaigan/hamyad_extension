@@ -23,8 +23,13 @@ class CreateQuestionsTable extends Migration
             $table->string('file')->nullable();
             $table->string('image')->nullable();
 
+            $table->unsignedInteger('exam_id');
+
             $table->timestamps();
             $table->softDeletes();
+        });
+        Schema::table('questions', function($table) {
+            $table->foreign('exam_id')->references('id')->on('exams')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

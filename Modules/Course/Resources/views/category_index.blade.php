@@ -29,20 +29,24 @@
         This view is loaded from module: {!! config('course.name') !!}
     </p>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Icon</th>
-
-        </tr>
-        @foreach($categories['data'] as $category)
-            <tr class='clickable-row' data-url="{{$category['id']}}">
-                <td>{{$category['name']}}    </td>
-                <td>{{$category['icon']}}    </td>
+    @if(!empty($errors->first()))
+        <h3>{{ $errors->first() }}</h3>
+    @else
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Icon</th>
 
             </tr>
-        @endforeach
-    </table>
+            @foreach($categories['data'] as $category)
+                <tr class='clickable-row' data-url="{{$category['id']}}">
+                    <td>{{$category['name']}}    </td>
+                    <td>{{$category['icon']}}    </td>
+
+                </tr>
+            @endforeach
+        </table>
+    @endif
 
     <script>
         $(document).ready(function(){

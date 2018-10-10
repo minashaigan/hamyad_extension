@@ -153,6 +153,7 @@ return [
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Nwidart\Modules\LaravelModulesServiceProvider::class,
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
 
         /*
          * Application Service Providers...

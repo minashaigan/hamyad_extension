@@ -23,23 +23,28 @@
         }
     </style>
 
-    <h1>Hello World</h1>
+    @if(!empty($errors->first()))
+        <h3>{{ $errors->first() }}</h3>
+    @else
+        <h1>Hello World</h1>
 
-    <p>
-        This view is loaded from module: {!! config('course.name') !!}
-    </p>
+        <p>
+            This view is loaded from module: {!! config('course.name') !!}
+        </p>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Icon</th>
-        </tr>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Icon</th>
+            </tr>
 
-        <tr>
-            <td>{{$category['data']['name']}}</td>
-            <td>{{$category['data']['icon']}}</td>
-        </tr>
+            <tr>
+                <td>{{$category['data']['name']}}</td>
+                <td>{{$category['data']['icon']}}</td>
+            </tr>
 
-    </table>
+        </table>
+
+    @endif
 
 @stop

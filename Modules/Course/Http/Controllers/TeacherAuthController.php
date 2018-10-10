@@ -44,7 +44,7 @@ class TeacherAuthController extends Controller
     public function register(Request $request)
     {
         Config::set('jwt.user', 'Modules\Course\Entities\Teacher');
-        Config::set('auth.providers.users.model', \Modules\Course\Entities\Teacher::class);
+        Config::set('auth.providers.users.model', Teacher::class);
         // validation
         $this->validate($request, [
             'name'              => 'required|min:3',
@@ -126,7 +126,7 @@ class TeacherAuthController extends Controller
     public function login(Request $request)
     {
         Config::set('jwt.user', 'Modules\Course\Entities\Teacher');
-        Config::set('auth.providers.users.model', \Modules\Course\Entities\Teacher::class);
+        Config::set('auth.providers.users.model', Teacher::class);
         //validation
         $credentials = $this->validate($request, [
             'email'             => 'required|email',

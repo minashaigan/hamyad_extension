@@ -33,4 +33,14 @@ class Category extends Model
     {
         return $this->hasMany('Modules\Course\Entities\Course');
     }
+
+    /**
+     * Get the exams for the category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function exams()
+    {
+        return $this->hasMany('Modules\Exam\Entities\Exam');
+    }
 }

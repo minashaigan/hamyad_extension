@@ -16,6 +16,6 @@ class OrganizationDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(OrganizationTableSeeder::class);
     }
 }

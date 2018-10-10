@@ -45,12 +45,22 @@ class Exam extends Model
     }
 
     /**
-     * The questions that belong the exam.
+     * Get the questions for the category.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function questions()
     {
-        return $this->belongsToMany('Modules\Exam\Entities\Question', 'exam_question', 'exam_id', 'question_id');
+        return $this->hasMany('Modules\Exam\Entities\Question');
+    }
+
+    /**
+     * Get the category that owns the exam.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo('Modules\Course\Entities\Category', 'category_id');
     }
 }

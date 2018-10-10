@@ -4,8 +4,9 @@ namespace Modules\Subscription\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Subscription\Entities\Subscription;
 
-class SubscriptionDatabaseSeeder extends Seeder
+class SubscriptionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +17,7 @@ class SubscriptionDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $this->call(SubscriptionTableSeeder::class);
-        
+        // create 3 subscriptions using the course factory
+        factory(Subscription::class, 3)->create();
     }
 }

@@ -19,7 +19,8 @@ class MainController extends Controller
             // courses
             $user_courses = $user->courses()->get()->pluck('id');
 
-            $courses = Course::query()->whereNotIn('id', $user_courses)->get();
+//            $courses = Course::query()->whereNotIn('id', $user_courses)->get();
+            $courses = Course::all();
 
             /// new courses
             $new_courses = $courses->sortBy('created_at')->take(6)->values()->all();

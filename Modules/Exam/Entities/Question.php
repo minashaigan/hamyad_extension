@@ -25,13 +25,13 @@ class Question extends Model
     ];
 
     /**
-     * The exams that belong the question.
+     * Get the exam that owns the question.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function exams()
+    public function exam()
     {
-        return $this->belongsToMany('Modules\Exam\Entities\Exam', 'exam_question', 'question_id', 'exam_id');
+        return $this->belongsTo('Modules\Exam\Entities\Exam', 'exam_id');
     }
 
     /**

@@ -20,6 +20,8 @@ class CreateUserQuestionTable extends Migration
                 $table->unsignedBigInteger('user_id');
                 $table->unsignedInteger('question_id');
 
+                $table->double('score')->default(0);
+
                 $table->unique(array('user_id', 'question_id'));
 
                 $table->timestamps();

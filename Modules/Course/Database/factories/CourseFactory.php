@@ -22,7 +22,7 @@ $factory->define(\Modules\Course\Entities\Teacher::class, function (Faker $faker
         'IBAN'                  => str_random(10),
         'join_date'             => '1397/1/1',
         'phone'                 => '09128354865',
-        'purchase_partnership'  => 1
+        'purchase_partnership'  => array_random([1,3,6])
     ];
 });
 
@@ -31,8 +31,8 @@ $factory->define(\Modules\Course\Entities\Course::class, function (Faker $faker)
         'name'          => $faker->name,
         'image'         => $faker->image(),
         'description'   => str_random(10),
-        'salable'       => 1,
-        'coming_soon'   => 1,
+        'salable'       => array_random([1,3,6]),
+        'coming_soon'   => array_random([1,3,6]),
         'category_id'   => random_int(1, 10),
         'teacher_id'    => random_int(1, 10),
     ];

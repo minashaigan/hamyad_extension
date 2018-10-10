@@ -23,24 +23,29 @@
         }
     </style>
 
-    <h1>Organizations</h1>
+    @if(!empty($errors->first()))
+        <h3>{{ $errors->first() }}</h3>
+    @else
+        <h1>Organizations</h1>
 
-    <p>
-        This view is loaded from module: {!! config('course.name') !!}
-    </p>
+        <p>
+            This view is loaded from module: {!! config('course.name') !!}
+        </p>
 
-    <table>
-        <tr>
-            <th>Icon</th>
-
-        </tr>
-        @foreach($organizations as $organization)
-            <tr class='clickable-row' data-url="organization/{{$organization['id']}}">
-                <td>{{$organization['logo']}}</td>
+        <table>
+            <tr>
+                <th>Icon</th>
 
             </tr>
-        @endforeach
-    </table>
+            @foreach($organizations as $organization)
+                <tr class='clickable-row' data-url="organization/{{$organization['id']}}">
+                    <td>{{$organization['logo']}}</td>
+
+                </tr>
+            @endforeach
+        </table>
+
+    @endif
 
     <script>
         $(document).ready(function(){

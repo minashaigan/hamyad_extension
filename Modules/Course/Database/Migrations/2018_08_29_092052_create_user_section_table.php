@@ -14,20 +14,9 @@ class CreateUserSectionTable extends Migration
     public function up()
     {
         if( \Module::collections()->has('Auth')) {
-            Schema::create('user_section', function (Blueprint $table) {
-                $table->increments('id');
-
-                $table->unsignedBigInteger('user_id');
-                $table->unsignedInteger('section_id');
-
-                $table->unique(array('user_id', 'section_id'));
-
-                $table->timestamps();
-                $table->softDeletes();
-            });
-            Schema::table('user_section', function ($table) {
-                $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-                $table->foreign('section_id')->references('id')->on('sections')->onUpdate('cascade')->onDelete('cascade');
+            Schema::connection('mongodb')->create('user_section', function ($collection) {
+                $collection->index('user_id');
+                $collection->index('section_id');
             });
         }
     }
@@ -39,6 +28,6 @@ class CreateUserSectionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_section');
+        Schema::connection('mongodb')->drop(['user_section']);
     }
 }

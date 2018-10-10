@@ -1,7 +1,5 @@
 <?php
 
-// web
-
 Route::group(['middleware' => 'web', 'namespace' => 'Modules\Course\Http\Controllers'], function()
 {
     // course

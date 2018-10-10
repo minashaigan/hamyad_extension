@@ -76,4 +76,34 @@ class User extends Authenticatable implements AuthenticatableContract, Authoriza
     {
         return $this->belongsToMany('Modules\Course\Entities\Section', 'user_section', 'user_id', 'section_id');
     }
+
+    /**
+     * The exams that belong the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function exams()
+    {
+        return $this->belongsToMany('Modules\Exam\Entities\Exam', 'user_exam', 'user_id', 'exam_id');
+    }
+
+    /**
+     * The questions that belong the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function questions()
+    {
+        return $this->belongsToMany('Modules\Exam\Entities\Question', 'user_question', 'user_id', 'question_id');
+    }
+
+    /**
+     * The favorites that belong the user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function favorites()
+    {
+        return $this->belongsToMany('Modules\Course\Entities\Course', 'favorites', 'user_id', 'course_id');
+    }
 }

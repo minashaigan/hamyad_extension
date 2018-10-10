@@ -20,6 +20,9 @@ class CreateUserExamTable extends Migration
                 $table->unsignedBigInteger('user_id');
                 $table->unsignedInteger('exam_id');
 
+                $table->double('score')->default(0);
+                $table->time('time')->nullable();
+
                 $table->unique(array('user_id', 'exam_id'));
 
                 $table->timestamps();

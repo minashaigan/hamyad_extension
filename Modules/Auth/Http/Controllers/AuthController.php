@@ -83,7 +83,7 @@ class AuthController extends Controller
             }
             catch (\Exception $e){
 
-                return redirect('home')->withErrors(report($e));
+                return view('course::home')->withErrors(report($e));
             }
         }
         else {
@@ -97,7 +97,7 @@ class AuthController extends Controller
                     'join_date' => \Carbon\Carbon::now()->format('m/d/Y')
                 ]);
             } catch (\Exception $e) {
-                return redirect('home')->withErrors(report($e));
+                return view('course::home')->withErrors(report($e));
             }
         }
         // JWT Auth
@@ -106,11 +106,11 @@ class AuthController extends Controller
         try {
             if (!$token = $this->guard()->attempt($credentials)) {
 
-                return redirect('home')->withErrors('Unauthorized');
+                return view('course::home')->withErrors('Unauthorized');
             }
         } catch (JWTException $e) {
 
-            return redirect('home')->withErrors(report($e));
+            return view('course::home')->withErrors(report($e));
         }
 
         return redirect('home');
@@ -142,28 +142,29 @@ class AuthController extends Controller
         $user = User::query()->where('email', $request->input('email'))->first();
         if($user)
         {
+
             if (Hash::check($request->input('password'), $user->password))
             {
                 try
                 {
                     if (!$token = $this->guard()->attempt($credentials))
                     {
-                        return redirect('home')->withErrors('Unauthorized');
+                        return view('course::home')->withErrors('Unauthorized');
                     }
                 }
                 catch (JWTException $e)
                 {
-                    return redirect('home')->withErrors('could_not_create_token');
+                    return view('course::home')->withErrors('could_not_create_token');
                 }
             }
             else
             {
-                return redirect('home')->withErrors('Password is wrong');
+                return view('course::home')->withErrors('Password is wrong');
             }
         }
         else
         {
-            return redirect('home')->withErrors('Phone does not exist.');
+            return view('course::home')->withErrors('Phone does not exist.');
         }
         return redirect('home');
     }

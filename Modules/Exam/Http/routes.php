@@ -1,6 +1,7 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'exam', 'namespace' => 'Modules\Exam\Http\Controllers'], function()
+Route::group(['middleware' => 'web', 'namespace' => 'Modules\Exam\Http\Controllers'], function()
 {
-    Route::get('/', 'ExamController@index');
+    Route::get('exams/{id}', 'ExamController@show');
+    Route::get('exams/{id}/questions', 'QuestionController@show');
 });
